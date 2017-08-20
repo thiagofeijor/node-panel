@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DxButtonModule } from 'devextreme-angular';
 
 @Component({
   selector: 'app-dash',
@@ -11,5 +12,4 @@ export class DashComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

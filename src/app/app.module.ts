@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { DxButtonModule } from 'devextreme-angular';
 
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
@@ -20,7 +21,8 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    DxButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

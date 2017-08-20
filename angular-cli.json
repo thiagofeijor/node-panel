@@ -18,9 +18,14 @@
       "tsconfig": "tsconfig.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "../node_modules/material-design-lite/material.min.css",
+        "../node_modules/devextreme/dist/css/dx.common.css",
+        "../node_modules/devextreme/dist/css/dx.light.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/material-design-lite/material.min.js"
+      ],
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
@@ -46,7 +51,11 @@
   "test": {
     "karma": {
       "config": "./karma.conf.js"
-    }
+    } 
+  },
+  "sassLoader": {
+    "includePaths": [
+    ]
   },
   "defaults": {
     "styleExt": "css",
