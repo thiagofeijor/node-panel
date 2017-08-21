@@ -7,9 +7,11 @@ import { DxButtonModule } from 'devextreme-angular';
   styleUrls: ['./dash.component.css']
 })
 export class DashComponent implements OnInit {
+  user: any;
 
   constructor() { }
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('fruser'));
   }
 }

@@ -5,7 +5,11 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { DashComponent } from './dash/dash.component';
 
-var adeslogado: boolean = !localStorage.getItem('fruser');
+try{
+    var adeslogado: boolean = !localStorage.getItem('fruser');
+}catch(err){
+    var adeslogado: boolean = false;
+}
 
 const APP_ROUTES: Routes = [ 
     { path: 'admin', component: ( adeslogado ? LoginComponent : DashComponent)},

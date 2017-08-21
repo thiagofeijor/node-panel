@@ -1,1 +1,28 @@
-<h1>teste</h1>
+<div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="width: 100%;" [hidden]="!loading"></div>
+
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--4-col"></div>
+    <div class="mdl-cell mdl-cell--4-col"> 
+
+        <img src="https://image.freepik.com/free-vector/abstract-logo-with-colorful-leaves_1025-695.jpg" style="width: 250px;height: 250px;border-radius: 100%;margin: 0px 10% 10px 10%;">
+
+        <form [formGroup]="loginForm" (ngSubmit)="enviar()">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="email" formControlName="email" id="sample3">
+                <label class="mdl-textfield__label" for="sample3">Digite seu e-mail</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="password" formControlName="senha" id="sample3">
+                <label class="mdl-textfield__label" for="sample3">Digite sua senha</label>
+            </div>
+            
+            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                Entrar
+            </button>
+            
+        </form>
+
+    </div>
+    <div class="mdl-cell mdl-cell--4-col"></div>
+</div>
+

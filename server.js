@@ -34,7 +34,7 @@ function start(callback) {
   app.use(express.static(path.join(__dirname, 'dist')));
 
   // Set our api routes
-  //app.use('/api', api);
+  app.use('/api', api);
 
   // Catch all other routes and return the index file
   app.get('*', (req, res) => {
@@ -42,8 +42,8 @@ function start(callback) {
   });
   
   app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "authorization,content-type,cache-control");
+    res.header("Access-Control-Allow-Origin", "");
+    res.header("Access-Control-Allow-Headers", "authorization,content-type,cache-control,Accept");
     next();
   });
 
