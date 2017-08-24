@@ -1,3 +1,4 @@
+import { NgModule } from '@angular/core';
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -11,9 +12,14 @@ try{
     var adeslogado: boolean = false;
 }
 
-const APP_ROUTES: Routes = [ 
-    { path: 'admin', component: ( adeslogado ? LoginComponent : DashComponent)},
-    { path: '', component: HomeComponent }
+const appRoutes: Routes = [
+    { path: 'admin', component: ( adeslogado ? LoginComponent : DashComponent) },
+    { path: '', component: HomeComponent },
+    { path: '**', component: HomeComponent }
 ];
 
-export const routing: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);
+@NgModule({
+    imports: [RouterModule.forRoot(appRoutes)],
+    exports: [RouterModule]
+})
+export class AppRoutingModule {}

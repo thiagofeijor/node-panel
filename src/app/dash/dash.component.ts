@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DxButtonModule } from 'devextreme-angular';
+import { DxPopupModule, DxButtonModule, DxTemplateModule } from 'devextreme-angular';
 
 @Component({
   selector: 'app-dash',
@@ -7,11 +7,14 @@ import { DxButtonModule } from 'devextreme-angular';
   styleUrls: ['./dash.component.css']
 })
 export class DashComponent implements OnInit {
-  user: any;
-
+  popupVisible = false;
+  
   constructor() { }
 
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem('fruser'));
   }
-}
+  
+  showInfo(employee) {
+      this.popupVisible = true;
+  }
+} 

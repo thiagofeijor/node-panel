@@ -35,8 +35,9 @@ testem.log
 /e2e/*.js
 /e2e/*.map
 
-#node_modules
+#project
 node_modules/
+config.js
 
 #System Files
 .DS_Store
