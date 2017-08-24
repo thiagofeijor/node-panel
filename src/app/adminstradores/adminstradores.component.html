@@ -1,0 +1,116 @@
+<div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="width: 100%;" [hidden]="!loading"></div>
+
+<div class="mdl-grid demo-content" style="width: 100% !important;">
+      
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--6-col">
+            <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid mdl-cell-user">
+              
+              <div class="demo-list-action mdl-list"> 
+                <div class="mdl-list__item" (click)="novo()">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-avatar">person_add</i>
+                    <span>Adicionar novo</span> 
+                  </span>
+                </div>
+                <div class="mdl-list__item" *ngFor="let item of usuarios;let i = index" (click)="select(item)">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-avatar">person</i>
+                    <span>{{item.email}}</span> 
+                  </span>
+                </div>
+              </div>
+
+            </div>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col">
+            <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid mdl-cell-user" *ngIf="subview == ''">
+            </div>
+
+            <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid mdl-cell-user" *ngIf="subview == 'senha'">
+              <form [formGroup]="edtForm" (ngSubmit)="btnPass()">
+                  <ul class="demo-list-item mdl-list">
+                    <li class="mdl-list__item">
+                      <span class="mdl-list__item-primary-content">
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input formControlName="nova" class="mdl-textfield__input" type="password" id="sample1">
+                            <label class="mdl-textfield__label" for="sample1">Senha</label>
+                          </div>
+                      </span>
+                    </li>
+                    <li class="mdl-list__item">
+                      <span class="mdl-list__item-primary-content">
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input formControlName="confirma" class="mdl-textfield__input" type="password" id="sample2">
+                            <label class="mdl-textfield__label" for="sample2">Confirma</label>
+                          </div>
+                      </span>
+                    </li>
+                    <li class="mdl-list__item">
+                      <span class="mdl-list__item-primary-content">
+                        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised">
+                          SALVAR
+                        </button>
+                      </span>
+                    </li>
+                  </ul>
+                </form>
+            </div>
+
+          <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid mdl-cell-user" *ngIf="subview == 'novo'">
+            <form [formGroup]="novoForm" (ngSubmit)="btnNew()">
+              <ul class="demo-list-item mdl-list">
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input formControlName="email" class="mdl-textfield__input" type="text" id="sample1">
+                        <label class="mdl-textfield__label" for="sample1">E-mail</label>
+                      </div>
+                  </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input formControlName="senha" class="mdl-textfield__input" type="password" id="sample2">
+                        <label class="mdl-textfield__label" for="sample2">Senha</label>
+                      </div>
+                  </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised">
+                      SALVAR
+                    </button>
+                  </span>
+                </li>
+              </ul>
+            </form>
+          </div>
+
+          <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid mdl-cell-user" *ngIf="subview == 'view'">
+            
+            <ul class="demo-list-item mdl-list">
+              <li class="mdl-list__item">
+                <span class="mdl-list__item-primary-content">
+                    <b>E-mail:</b>{{usuario.email}}
+                </span>
+              </li>
+              <li class="mdl-list__item">
+                <span class="mdl-list__item-primary-content" (click)="senha()">
+                  <i class="material-icons mdl-list__item-avatar">credit_card</i>
+                  <span>Mudar senha</span> 
+                </span>
+              </li>
+              <li class="mdl-list__item" (click)="delete()">
+                <span class="mdl-list__item-primary-content">
+                  <i class="material-icons mdl-list__item-avatar">delete</i>
+                  <span>Excluir</span> 
+                </span>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+    </div>
+  
+  </div>

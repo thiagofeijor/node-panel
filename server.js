@@ -26,41 +26,25 @@ function start(callback) {
   mongoose.Promise = bluebird;
   mongoose.connect(config.mongo.link);
 
-  // Parsers for POST data
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({ extended: false }));
-
-  // Point static path to dist
-  app.use(express.static(path.join(__dirname, 'dist')));
-
-  // Set our api routes
-  app.use('/api', api);
-
-  // Catch all other routes and return the index file
-  app.get('*', (req, res) => {
+  app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
   });
-  
+
   app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "");
-    res.header("Access-Control-Allow-Headers", "authorization,content-type,cache-control,Accept");
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "authorization,content-type,cache-control");
     next();
   });
 
-  /**
-   * Get port from environment and store in Express.
-   */
-  app.set('port', config.server.port);
+  app.use(morgan('tiny'));
+  app.use(bodyParser.json({limit: '50mb'}));
+  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(cookieParser());
+  app.use(express.static(path.join(__dirname, 'dist')));
 
-  /**
-   * Create HTTP server.
-   */
-  const server = http.createServer(app);
+  app.use('/api', api);
 
-  /**
-   * Listen on provided port, on all network interfaces.
-   */
-  server.listen(config.server.port, () => 
+  app.listen(config.server.port, () => 
     console.log(`API running on localhost:${config.server.port}`)
   );
 

@@ -68,8 +68,6 @@ export class RequisicoesService {
             .map(data => { 
                 return data.json();
             })
-            .do(data => this.loader.dismiss(), 
-                err=> this.loader.dismiss())
             .catch((error:any) => {
 
                 switch(error){
@@ -124,15 +122,15 @@ export class RequisicoesService {
 
     getFormNewpass(){
         return this.formBuilder.group({
-            antiga: [null, [Validators.required, Validators.minLength(6)]],
-            senha: [null, [Validators.required, Validators.minLength(6)]],
-            confirma: [null, [Validators.required, Validators.minLength(6)]]
+            nova: [null, [Validators.required]],
+            confirma: [null, [Validators.required]]
         },  { validator: this.passwordConfirming });
     }
 
     getFormUser(){
         return this.formBuilder.group({
-            nome: [null, [Validators.required]]
+            email: [null, [Validators.required]],
+            senha: [null, [Validators.required]]
         });
     }
 
@@ -147,6 +145,6 @@ export class RequisicoesService {
     }
 
     passwordConfirming(c: AbstractControl) {        
-        return (c.get('senha').value == c.get('confirma').value ? null : { nomatch: true });
+        return (c.get('nova').value == c.get('confirma').value ? null : { nomatch: true });
     }
 }

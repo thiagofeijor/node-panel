@@ -12,4 +12,10 @@ router.route('/login')
 router.route('/forgot')
     .post((...args) => controller.sendForgot(...args));
 
+router.route('/:id/delete')
+    .get((...args) => controller.deleta(...args));
+
+router.route('/:id/pass')
+    .post((...args) => controller.pass(...args));
+
 module.exports = router;

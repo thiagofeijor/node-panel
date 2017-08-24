@@ -1,0 +1,41 @@
+.demo-card-wide.mdl-card {
+    width: 100%;
+    }
+    .demo-card-wide > .mdl-card__title {
+    color: #fff;
+    height: 176px;
+    background: url('https://getmdl.io/assets/demos/welcome_card.jpg') center / cover;
+    }
+    .demo-card-wide > .mdl-card__menu {
+    color: #fff;
+    }
+    .demo-list-action{
+        width: 100% !important;
+    }
+    
+    .mdl-cell-user{
+        height: 500px !important;
+        max-height: 500px !important;
+        overflow-y: auto;
+    }
+    .mdl-grid{
+        margin: 0px;
+        padding: 0px;
+        width: 100%;
+    }
+    
+    .demo-list-item {
+        width: 100%;
+    }
+    
+    .avatar{
+        width: 100%;
+        text-align: center;
+    }
+    
+    .avatar img{
+        width: 120px;
+        border-radius: 100%;
+        height: 120px;
+        object-fit: cover;
+    }

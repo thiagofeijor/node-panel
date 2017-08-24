@@ -5,6 +5,9 @@ const router = new Router();
 router.route('/')
     .get((...args) => controller.listar(...args))
     .post((...args) => controller.criar(...args));
+    
+router.route('/:id/delete')
+    .get((...args) => controller.deleta(...args));
 
 router.route('/:id/proximo')
     .get((...args) => controller.listarProximo(...args));

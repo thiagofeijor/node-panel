@@ -95,6 +95,32 @@ class UsuarioController extends Controller {
         this.autenticar(req, _success, _error);
 
     }
+    
+    deleta(req, res){ 
+        
+        var _atualizaUsuario = function () {
+            var usuarioAlterar = req.params.id;
+
+            usuarioModel.update({_id: usuarioAlterar}, {$set: {status: 'excluido'}})
+                .then(usuarioAtualizado => {
+                    if (usuarioAtualizado.ok == '1') {
+                        return res.status(200).json({"msg":"Atualizado com sucesso."});
+                    } else {
+                        return res.status(400).json({"msg":"Erro ao atualizar"});
+                    }
+                })
+                .catch(error => {
+                    return res.status(400).json({"msg":"Erro ao atualizar"});
+                });
+
+        };
+
+        var _callbackErro = function () {
+            return res.status(401).end();
+        };
+
+        this.autenticar(req, _atualizaUsuario, _callbackErro);
+    }
         
     criar(req, res, next){
         var log = req.body;

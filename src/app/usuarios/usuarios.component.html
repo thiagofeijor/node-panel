@@ -1,0 +1,56 @@
+<div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="width: 100%;" [hidden]="!loading"></div>
+
+<div class="mdl-grid demo-content" style="width: 100% !important;">
+      
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--6-col">
+            <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid mdl-cell-user">
+              
+              <div class="demo-list-action mdl-list"> 
+                <div class="mdl-list__item" *ngFor="let item of usuarios;let i = index" (click)="select(item)">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-avatar">person</i>
+                    <span>{{item.nome}}</span> 
+                  </span>
+                </div>
+              </div>
+
+            </div>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col">
+          <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid mdl-cell-user" *ngIf="subview == ''">
+          </div>
+          <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid mdl-cell-user" *ngIf="subview == 'view'">
+            
+            
+            <ul class="demo-list-item mdl-list">
+              <li class="mdl-list__item">
+                <span class="mdl-list__item-primary-content">
+                    <div class="avatar">
+                      <img [src]="url + 'arquivo/' + usuario.foto" onError="this.src='https://cdn.ipc.digital/wp-content/uploads/2016/07/icon-user-default.png'">
+                    </div>
+                </span>
+              </li>
+              <li class="mdl-list__item">
+                <span class="mdl-list__item-primary-content">
+                    <b>Nome:</b>{{usuario.nome}}
+                </span>
+              </li>
+              <li class="mdl-list__item">
+                <span class="mdl-list__item-primary-content">
+                    <b>E-mail:</b>{{usuario.email}}
+                </span>
+              </li>
+              <li class="mdl-list__item" (click)="delete()">
+                <span class="mdl-list__item-primary-content">
+                  <i class="material-icons mdl-list__item-avatar">delete</i>
+                  <span>Excluir</span> 
+                </span>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+    </div>
+  
+  </div>

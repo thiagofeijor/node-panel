@@ -80,6 +80,68 @@ class administradorController extends Controller {
         this.autenticar(req, _callbackSucesso, _callbackErro);
 
     }
+    
+    deleta(req, res){ 
+        
+        var _atualizaUsuario = function () {
+            var usuarioAlterar = req.params.id;
+
+            administradorModel.update({_id: usuarioAlterar}, {$set: {status: 'excluido'}})
+                .then(usuarioAtualizado => {
+                    if (usuarioAtualizado.ok == '1') {
+                        return res.status(200).json({"msg":"Atualizado com sucesso."});
+                    } else {
+                        return res.status(400).json({"msg":"Erro ao atualizar"});
+                    }
+                })
+                .catch(error => {
+                    return res.status(400).json({"msg":"Erro ao atualizar"});
+                });
+
+        };
+
+        var _callbackErro = function () {
+            return res.status(401).end();
+        };
+
+        this.autenticar(req, _atualizaUsuario, _callbackErro);
+    }
+
+    pass(req, res){ 
+        
+        var _atualizaUsuario = function () {
+            var usuarioAlterar = req.params.id;
+            var usuarioPush = req.body;
+
+            administradorModel.findByOne({_id: usuarioAlterar})
+                .then(doc => {
+                    if (!doc) {
+                        return res.status(404).json({"msg":"Usuário não localizado"});
+                    }
+                    administradorModel.update({_id: usuarioAlterar}, {$set: {senha: usuarioPush.senha}})
+                        .then(usuarioAtualizado => {
+                            if (usuarioAtualizado.ok == '1') {
+                                return res.status(200).json({"msg":"Atualizado com sucesso."});
+                            } else {
+                                return res.status(400).json({"msg":"Erro ao atualizar"});
+                            }
+                        })
+                        .catch(error => {
+                            return res.status(400).json({"msg":"Erro ao atualizar"});
+                        });
+                })
+                .catch(err => {
+                    console.log("no catch do model");
+                    next(err)
+                })
+        };
+
+        var _callbackErro = function () {
+            return res.status(401).end();
+        };
+
+        this.autenticar(req, _atualizaUsuario, _callbackErro);
+    }
 
     applogin(req, res, next) {
         var _callbackSucesso = function () {

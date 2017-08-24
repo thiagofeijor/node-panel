@@ -7,14 +7,9 @@ import { DxPopupModule, DxButtonModule, DxTemplateModule } from 'devextreme-angu
   styleUrls: ['./dash.component.css']
 })
 export class DashComponent implements OnInit {
-  popupVisible = false;
   
   constructor() { }
 
   ngOnInit() {
-  }
-  
-  showInfo(employee) {
-      this.popupVisible = true;
   }
 } 

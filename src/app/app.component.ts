@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit  {
   adeslogado: boolean = !localStorage.getItem('fruser');
-  user;
+  popupVisible: boolean = false;
 
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem('fruser'));
+  }
+  
+  showAbout() {
+      this.popupVisible = true;
+  }
+
+  hideAbout(){
+    this.popupVisible = false;
   }
 }
