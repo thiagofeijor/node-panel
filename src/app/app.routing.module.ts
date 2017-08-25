@@ -8,6 +8,7 @@ import { DashComponent } from './dash/dash.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { AdminstradoresComponent } from './adminstradores/adminstradores.component';
 import { ProfileComponent } from './profile/profile.component';
+import { MessageComponent } from './message/message.component';
 
 try{
     var adeslogado: boolean = !localStorage.getItem('fruser');
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
     { path: 'admin/usuarios', component: ( adeslogado ? LoginComponent : UsuariosComponent) },
     { path: 'admin/profile', component: ( adeslogado ? LoginComponent : ProfileComponent) },
     { path: 'admin/administradores', component: ( adeslogado ? LoginComponent : AdminstradoresComponent) },
+    { path: 'admin/messagens', component: ( adeslogado ? LoginComponent : MessageComponent) },
     { path: '', component: HomeComponent },
     { path: '**', component: HomeComponent }
 ];

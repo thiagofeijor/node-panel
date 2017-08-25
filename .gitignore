@@ -37,8 +37,8 @@ testem.log
 
 #project
 node_modules/
-config.js
 
 #System Files
 .DS_Store
 Thumbs.db
+config.js

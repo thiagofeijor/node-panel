@@ -4,7 +4,7 @@
       
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--6-col">
-            <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid mdl-cell-user">
+            <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--6-col mdl-grid mdl-cell-user">
               
               <div class="demo-list-action mdl-list"> 
                 <div class="mdl-list__item" (click)="novo()">
@@ -24,10 +24,10 @@
             </div>
         </div>
         <div class="mdl-cell mdl-cell--6-col">
-            <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid mdl-cell-user" *ngIf="subview == ''">
+            <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--6-col mdl-grid mdl-cell-user" *ngIf="subview == ''">
             </div>
 
-            <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid mdl-cell-user" *ngIf="subview == 'senha'">
+            <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--6-col mdl-grid mdl-cell-user" *ngIf="subview == 'senha'">
               <form [formGroup]="edtForm" (ngSubmit)="btnPass()">
                   <ul class="demo-list-item mdl-list">
                     <li class="mdl-list__item">
@@ -48,7 +48,10 @@
                     </li>
                     <li class="mdl-list__item">
                       <span class="mdl-list__item-primary-content">
-                        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised">
+                        <button class="mdl-button mdl-js-button mdl-button--raised red" (click)="selectD()">
+                          CANCELAR
+                        </button>
+                        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised blue">
                           SALVAR
                         </button>
                       </span>
@@ -57,7 +60,10 @@
                 </form>
             </div>
 
-          <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid mdl-cell-user" *ngIf="subview == 'novo'">
+          <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--6-col mdl-grid mdl-cell-user" *ngIf="subview == 'novo'">
+
+            <h3>Adicione um novo Administrador</h3>
+
             <form [formGroup]="novoForm" (ngSubmit)="btnNew()">
               <ul class="demo-list-item mdl-list">
                 <li class="mdl-list__item">
@@ -78,7 +84,7 @@
                 </li>
                 <li class="mdl-list__item">
                   <span class="mdl-list__item-primary-content">
-                    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised">
+                    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised blue">
                       SALVAR
                     </button>
                   </span>
@@ -87,7 +93,7 @@
             </form>
           </div>
 
-          <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid mdl-cell-user" *ngIf="subview == 'view'">
+          <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--6-col mdl-grid mdl-cell-user" *ngIf="subview == 'view'">
             
             <ul class="demo-list-item mdl-list">
               <li class="mdl-list__item">

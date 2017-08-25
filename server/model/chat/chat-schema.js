@@ -6,26 +6,21 @@ const normalizer = require('../../lib/normalize');
 
 const Schema = mongoose.Schema;
 
-const publicacaoSchema = new Schema({
-  "_iduser": {type: Schema.Types.ObjectId, ref: 'usuario' },
-  "titulo": String,
-  "categoria": String,
+const chatSchema = new Schema({
+  "_id1": {type: Schema.Types.ObjectId, ref: 'usuario' },
+  "_id2": {type: Schema.Types.ObjectId, ref: 'chat' },
   "texto": String,
-  "lat": String,
-  "lng": String,
-  "comentarios": [
-    {}
-  ],
   "status": String,
+  "_exclusao": [],
   "cadastro": { type: Date, default: Date.now },
 });
 
-publicacaoSchema.pre('save', function (next) {
+chatSchema.pre('save', function (next) {
 
   this.status = 'ativo';
   next();
 
 });
 
-publicacaoSchema.plugin(mongoosePaginate);
-module.exports = mongoose.model('publicacao', publicacaoSchema);
+chatSchema.plugin(mongoosePaginate);
+module.exports = mongoose.model('chat', chatSchema);

@@ -2,7 +2,7 @@
   <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
     <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600" *ngIf="!adeslogado">
       <div class="mdl-layout__header-row">
-        <span class="mdl-layout-title">Bem vindo</span>
+        <span class="mdl-layout-title">{{bem_vindo}}</span>
         <div class="mdl-layout-spacer"></div>
         <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
           <i class="material-icons">more_vert</i>
@@ -22,7 +22,7 @@
 
     <router-outlet *ngIf="adeslogado"></router-outlet> 
 
-    <main class="mdl-layout__content mdl-color--grey-100" *ngIf="!adeslogado" style="overflow-y: hidden;">
+    <main class="mdl-layout__content mdl-color--grey-100" *ngIf="!adeslogado" >
       <div class="mdl-grid demo-content">
         <div class="demo-cards mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid mdl-grid--no-spacing">
 

@@ -39,3 +39,9 @@ color: #fff;
     height: 120px;
     object-fit: cover;
 }
+
+.mdl-list__item-avatar, .mdl-list__item-avatar.material-icons{
+    font-size: 20px;
+    padding-left: 10px;
+    padding-top: 10px;
+}

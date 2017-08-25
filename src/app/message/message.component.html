@@ -1,0 +1,128 @@
+<div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="width: 100%;" [hidden]="!loading"></div>
+
+<div class="mdl-grid demo-content" style="width: 100% !important;">
+      
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--6-col">
+            <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--6-col mdl-grid mdl-cell-user">
+              
+              <div class="demo-list-action mdl-list">
+                <div class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                    <div class="mdl-grid">
+                      <div class="mdl-cell mdl-cell--6-col">
+                          <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                            style="width: 100%;"
+                            [style.backgroundColor]="active == 'saida' ? '#CF3434' : '#ffffff'" 
+                            [style.color]="active != 'saida' ? '#CF3434' : '#ffffff'" 
+                            (click)="active = 'saida'">Entrada</button>
+                      </div>
+                      <div class="mdl-cell mdl-cell--6-col">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                          style="width: 100%;"
+                          [style.backgroundColor]="active == 'entrada' ? '#64a9df' : '#ffffff'" 
+                          [style.color]="active != 'entrada' ? '#64a9df' : '#ffffff'" 
+                          (click)="active = 'entrada'">Saída</button>
+                      </div>
+                    </div>
+                  </span>
+                </div>
+                  
+                <div class="mdl-list__item" *ngFor="let item of mesagens;let i = index" (click)="select(item)" [hidden]="active != item.tipo">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-avatar"
+                    [style.backgroundColor]="item.respondido == 'sim' ? '#CF3434' : '#757575'" >message</i>
+                    <span>{{item.assunto}}</span> 
+                  </span>
+                </div>
+              </div>
+
+            </div>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col">
+            <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--6-col mdl-grid mdl-cell-user" *ngIf="subview == ''">
+            </div>
+
+            <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--6-col mdl-grid mdl-cell-user" *ngIf="subview == 'responder'">
+
+            <ul class="demo-list-item mdl-list">
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                      <b>Mensagem anterior:</b>{{mesage.texto}}
+                  </span>
+                </li>
+              </ul>
+
+              <form [formGroup]="respForm" (ngSubmit)="btnResp()">
+                  <ul class="demo-list-item mdl-list">
+                    <li class="mdl-list__item">
+                      <span class="mdl-list__item-primary-content">
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input formControlName="assunto" class="mdl-textfield__input" type="text" id="sample1">
+                            <label class="mdl-textfield__label" for="sample1">Assunto</label>
+                          </div>
+                      </span>
+                    </li>
+                    <li class="mdl-list__item">
+                      <span class="mdl-list__item-primary-content">
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input formControlName="texto" class="mdl-textfield__input" type="text" id="sample1">
+                            <label class="mdl-textfield__label" for="sample1">Mensagem</label>
+                          </div>
+                      </span>
+                    </li>
+
+                    <li class="mdl-list__item">
+                      <span class="mdl-list__item-primary-content">
+                        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised">
+                          SALVAR
+                        </button>
+                      </span>
+                    </li>
+                  </ul>
+                </form>
+            </div>
+
+          <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--6-col mdl-grid mdl-cell-user" *ngIf="subview == 'view'">
+            
+            <ul class="demo-list-item mdl-list">
+              <li class="mdl-list__item">
+                <span class="mdl-list__item-primary-content">
+                    <div class="avatar">
+                      <img [src]="url + 'arquivo/' + mesage.usuario[0].foto" onError="this.src='https://cdn.ipc.digital/wp-content/uploads/2016/07/icon-user-default.png'">
+                    </div>
+                </span>
+              </li>
+              <li class="mdl-list__item">
+                <span class="mdl-list__item-primary-content">
+                    <b>Nome:</b>{{mesage.usuario[0].nome}}
+                </span>
+              </li>
+              <li class="mdl-list__item">
+                <span class="mdl-list__item-primary-content">
+                    <b>E-mail:</b>{{mesage.usuario[0].email}}
+                </span>
+              </li>
+              <li class="mdl-list__item">
+                <span class="mdl-list__item-primary-content">
+                    <b>Assunto:</b>{{mesage.assunto}}
+                </span>
+              </li>
+              <li class="mdl-list__item">
+                <span class="mdl-list__item-primary-content">
+                    <b>Mensagem:</b>{{mesage.texto}}
+                </span>
+              </li>
+              <li class="mdl-list__item" *ngIf="mesage.tipo == 'saida'">
+                <span class="mdl-list__item-primary-content" (click)="responder()">
+                  <i class="material-icons mdl-list__item-avatar">send</i>
+                  <span>Responder</span> 
+                </span>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+    </div>
+  
+  </div>

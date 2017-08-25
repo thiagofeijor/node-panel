@@ -87,6 +87,10 @@ export class AdminstradoresComponent implements OnInit {
     this.usuario = item;
   }
 
+  selectD(){
+    this.subview = 'view';
+  }
+
   delete(){
     this.loading = true;
     this.req.getInternal('administrador/' + this.usuario._id + '/delete')

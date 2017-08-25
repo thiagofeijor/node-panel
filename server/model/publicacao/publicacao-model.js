@@ -2,7 +2,7 @@ const Model = require('../../lib/facade');
 const publicacaoSchema = require('./publicacao-schema');
 const usuarioSchema = require('../usuario/usuario-schema');
 const arquivoModel = require('../arquivo/arquivo-model');
-const fieldsVisibles = '_iduser titulo categoria texto lat lng';
+const fieldsVisibles = '_iduser titulo categoria texto lat lng comentarios';
 
 class publicacaoModel extends Model {
     
@@ -21,19 +21,42 @@ class publicacaoModel extends Model {
                 foreignField: "_id",
                 as: "usuario"
               }
-            }, 
-            { "$project": { 
-                "_iduser": 1,
-                "titulo": 1,
-                "cadastro": 1,
-                "texto": 1,
-                "nome": { "$arrayElemAt": [ "$usuario.nome", 0 ] },
-                "foto": { "$arrayElemAt": [ "$usuario.foto", 0 ] },
-                "fotos": { "$arrayElemAt": [ "$usuario.fotos", 0 ] },
-                "lat": { "$arrayElemAt": [ "$usuario.lat", 0 ] },
-                "lng": { "$arrayElemAt": [ "$usuario.lng", 0 ] }
+            },
+            {$lookup:
+              {
+                from: "usuarios",
+                localField: "comentarios._iduser",
+                foreignField: "_id",
+                as: "comentariosObjects"
               }
-            }
+            },
+            { "$project": {
+              "titulo": 1,
+              "texto": 1,
+              "_iduser": 1,
+              "categoria": 1,
+              "status": 1,
+              "lng": 1,
+              "lat": 1,
+              "nome": { "$arrayElemAt": [ "$usuario.nome", 0 ] },
+              "foto": { "$arrayElemAt": [ "$usuario.foto", 0 ] },
+              "usuario.nome": { "$arrayElemAt": [ "$usuario.nome", 0 ] },
+              "usuario._id": { "$arrayElemAt": [ "$usuario._id", 0 ] },
+              "usuario._iduser": { "$arrayElemAt": [ "$usuario._id", 0 ] },
+              "usuario.nome": { "$arrayElemAt": [ "$usuario.nome", 0 ] },
+              "usuario.foto": { "$arrayElemAt": [ "$usuario.foto", 0 ] },
+              "comentariosObjects.nome": { "$arrayElemAt": [ "$comentariosObjects.nome", 0 ] },
+              "comentariosObjects._id": { "$arrayElemAt": [ "$comentariosObjects._id", 0 ] },
+              "comentariosObjects.nome": { "$arrayElemAt": [ "$comentariosObjects.nome", 0 ] },
+              "comentariosObjects.foto": { "$arrayElemAt": [ "$comentariosObjects.foto", 0 ] },
+              "comentarios": {
+                  "$filter": {
+                      "input": "$comentarios",
+                      "as": "comentarios",
+                      "cond": { "$eq": [ "$$comentarios.status", "ativo" ] }
+                  }
+                }
+            }}
           ]);
   }
 

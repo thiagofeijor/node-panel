@@ -16,6 +16,7 @@ import { MenuComponent } from './ui-components/menu/menu.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UprofileComponent } from './ui-components/uprofile/uprofile.component';
 import { AdminstradoresComponent } from './adminstradores/adminstradores.component';
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AdminstradoresComponent } from './adminstradores/adminstradores.compone
     MenuComponent,
     ProfileComponent,
     UprofileComponent,
-    AdminstradoresComponent
+    AdminstradoresComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,

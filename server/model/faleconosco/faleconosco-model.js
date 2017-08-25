@@ -1,14 +1,25 @@
 const Model = require('../../lib/facade');
 const faleconoscoSchema = require('./faleconosco-schema');
-const fieldsVisibles = 'assunto descricao';
+const fieldsVisibles = 'assunto texto tipo respondido';
 
 class faleconoscoModel extends Model {
     
   listarfaleconoscos(query) {
     return faleconoscoSchema
-            .find(query)
-            .select(fieldsVisibles)
-            .populate('faleconosco');
+              .aggregate([
+                { $match:
+                  query },
+                { $sort: 
+                  {cadastro: -1}
+                },
+                { $lookup: {
+                    from: "usuarios", // collection name in db
+                    localField: "_iduser",
+                    foreignField: "_id",
+                    as: "usuario"
+                  }
+                }
+              ]);
   }
 
   findById(query) {

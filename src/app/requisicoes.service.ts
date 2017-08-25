@@ -140,6 +140,16 @@ export class RequisicoesService {
         });
     }
 
+    getFormResp(){
+        return this.formBuilder.group({
+            assunto: [null, [Validators.required]],
+            texto: [null, [Validators.required]],
+            _iduser: [null, [Validators.required]],
+            _idretorno: [null, [Validators.required]],
+            tipo: ['entrada']
+        });
+    }
+
     cadconfirm(c: AbstractControl) {        
         return (c.get('senha').value == c.get('confirma').value && c.get('aceite').value ? null : { nomatch: true });
     }
