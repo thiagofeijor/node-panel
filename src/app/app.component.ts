@@ -19,7 +19,6 @@ export class AppComponent implements OnInit  {
   constructor(private router: Router) {
     router.events.subscribe(( path: any ) => {
       this.bem_vindo = this.telas[path.url];
-      this.adeslogado = (path.url == '/');
     });
   }
 

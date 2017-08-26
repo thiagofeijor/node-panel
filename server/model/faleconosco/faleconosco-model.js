@@ -1,5 +1,6 @@
 const Model = require('../../lib/facade');
 const faleconoscoSchema = require('./faleconosco-schema');
+const notificacaoModel = require('../notificacao/notificacao-model');
 const fieldsVisibles = 'assunto texto tipo respondido';
 
 class faleconoscoModel extends Model {
@@ -43,7 +44,18 @@ class faleconoscoModel extends Model {
 
     schema.save(faleconosco, function (err, faleconoscoRetorno) {
       if (faleconoscoRetorno) {
-        callback(faleconoscoRetorno);
+        if(faleconoscoRetorno.tipo == 'entrada'){
+          notificacaoModel.criarnotificacaos({'tipo':'conta','_iduser':faleconoscoRetorno._iduser,'texto':'DR. Contábil'},
+            function(novonotificacao){
+              callback(faleconoscoRetorno);
+            },
+            function(erro){
+              callbackErro(err);
+            });
+          
+        }else{
+          callback(faleconoscoRetorno);
+        }
       }else{
         callbackErro(err);
       }

@@ -22,8 +22,9 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.req.submitInternal('administrador/login',this.loginForm.value)
       .subscribe((response) => {
+        this.loading = false;
         localStorage.setItem('fruser', JSON.stringify(response));
-        window.location.reload();
+        window.location.href = 'https://appmastermind.herokuapp.com/admin';
       },(err) => {
         this.loading = false;
         console.log(err);

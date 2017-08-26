@@ -146,6 +146,7 @@ class administradorController extends Controller {
     applogin(req, res, next) {
         var _callbackSucesso = function () {
             var log = req.body;
+            console.log(log);
             log.status = 'ativo';
             log.tipo = 'adm';
             

@@ -1,0 +1,38 @@
+.box{
+    height: 210px;
+    text-align: center;
+    font-size: 40px;
+    color: white;
+    padding-top: 70px;
+    cursor: pointer;
+}
+
+.green{
+    background-color: #cddc39;
+}
+
+.green1{
+    background-color: rgb(139, 195, 74);
+}
+
+.orange{
+    background-color: rgb(244, 67, 54);
+}
+
+.puple{
+    background-color: rgb(156, 39, 176);
+}
+
+.blue{
+    background-color: rgb(3, 169, 244);
+}
+
+.box p{
+    font-size: 30px;
+}
+
+.box p i{
+    font-size: 70px;
+    vertical-align: middle;
+    padding-right: 10px;
+} 

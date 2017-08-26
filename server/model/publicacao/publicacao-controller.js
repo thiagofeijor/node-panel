@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 const Controller = require('../../lib/controller');
 const publicacaoModel = require('./publicacao-model');
+const notificacaoModel = require('../notificacao/notificacao-model');
 const config = require('../../../config')
 
 class publicacaoController extends Controller {
@@ -181,6 +182,16 @@ class publicacaoController extends Controller {
             log.data = Date.now();
             log._iduser = ObjectId(log._iduser);
             log.status = 'ativo';
+
+            if(req.params.iduser != log._iduser){
+                notificacaoModel.criarnotificacaos({'tipo':'comentario','_iduser':req.params.iduser,'texto':log.nome},
+                    function(novonotificacao){
+                        console.log(novonotificacao)
+                    },
+                    function(erro){
+                        console.log('Erro');
+                    });
+            }
             
             publicacaoModel.update({_id: publicacao}, {$push: {comentarios: log}})
                 .then(usuarioAtualizado => {

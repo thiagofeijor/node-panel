@@ -12,4 +12,9 @@ export class DashComponent implements OnInit {
 
   ngOnInit() {
   }
+  
+  sair(){
+    localStorage.removeItem('fruser');
+    window.location.href = 'https://appmastermind.herokuapp.com/';
+  }
 } 

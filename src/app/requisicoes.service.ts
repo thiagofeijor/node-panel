@@ -18,7 +18,7 @@ export class RequisicoesService {
 
         //Pega link
         if(!/localhost/.test(document.location.host)) {
-            this.server = 'http://appmastermind.herokuapp.com/api/';
+            this.server = 'https://appmastermind.herokuapp.com/api/';
         }else{
             this.server = 'http://localhost:3001/api/';
         }
@@ -116,7 +116,7 @@ export class RequisicoesService {
     getFormLogin(){
         return this.formBuilder.group({
             email: [null, [Validators.required]],
-            senha: [null, [Validators.required, Validators.minLength(6)]],
+            senha: [null, [Validators.required]],
         });
     }
 

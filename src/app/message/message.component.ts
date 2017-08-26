@@ -16,6 +16,7 @@ export class MessageComponent implements OnInit {
   url: string = '';
   mesage: any;
   mesagens: any;
+  interv;
 
   constructor(public req: RequisicoesService) { }
 
@@ -50,6 +51,7 @@ export class MessageComponent implements OnInit {
     this.respForm.controls['_iduser'].setValue( this.mesage._iduser );
     this.respForm.controls['_iduser'].setValue( this.mesage._iduser );
     this.respForm.controls['_idretorno'].setValue( this.mesage._id );
+    this.respForm.controls['assunto'].setValue( this.mesage.assunto );
   }
 
   btnResp(){

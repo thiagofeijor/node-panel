@@ -16,9 +16,9 @@ export class UprofileComponent implements OnInit {
     }
   }
   
-    sair(){
-      localStorage.removeItem('fruser');
-      window.location.reload();
-    }
+  sair(){
+    localStorage.removeItem('fruser');
+    window.location.href = 'https://appmastermind.herokuapp.com/';
+  }
 
 }

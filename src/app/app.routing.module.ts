@@ -10,20 +10,13 @@ import { AdminstradoresComponent } from './adminstradores/adminstradores.compone
 import { ProfileComponent } from './profile/profile.component';
 import { MessageComponent } from './message/message.component';
 
-try{
-    var adeslogado: boolean = !localStorage.getItem('fruser');
-}catch(err){
-    var adeslogado: boolean = false;
-}
-
-const appRoutes: Routes = [
-    { path: 'admin', component: ( adeslogado ? LoginComponent : DashComponent) },
-    { path: 'admin/usuarios', component: ( adeslogado ? LoginComponent : UsuariosComponent) },
-    { path: 'admin/profile', component: ( adeslogado ? LoginComponent : ProfileComponent) },
-    { path: 'admin/administradores', component: ( adeslogado ? LoginComponent : AdminstradoresComponent) },
-    { path: 'admin/messagens', component: ( adeslogado ? LoginComponent : MessageComponent) },
-    { path: '', component: HomeComponent },
-    { path: '**', component: HomeComponent }
+var appRoutes: Routes = [
+    { path: '', component: LoginComponent },
+    { path: 'admin', component: DashComponent },
+    { path: 'admin/usuarios', component: UsuariosComponent },
+    { path: 'admin/profile', component: ProfileComponent },
+    { path: 'admin/administradores', component: AdminstradoresComponent },
+    { path: 'admin/messagens', component: MessageComponent }
 ];
 
 @NgModule({

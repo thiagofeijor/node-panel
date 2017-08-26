@@ -1,1 +1,22 @@
-<p></p>
+
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--6-col box orange" routerLink="/admin/messagens">
+        <p><i class="material-icons">message</i>Mensagens</p>
+    </div>
+    <div class="mdl-cell mdl-cell--6-col box green1" routerLink="/admin/usuarios">
+        <p><i class="material-icons">people</i>Usuário</p>
+    </div>
+</div>
+
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--3-col box blue" routerLink="/admin/profile">
+        <p><i class="material-icons">credit_card</i>Perfil</p>
+    </div>
+    <div class="mdl-cell mdl-cell--6-col box green" routerLink="/admin/administradores">
+        <p><i class="material-icons">person</i>Administradores</p>
+    </div>
+    <div class="mdl-cell mdl-cell--3-col box puple" (click)="sair()">
+        <p><i class="material-icons">exit_to_app</i>Logoff</p>
+    </div>
+
+</div>

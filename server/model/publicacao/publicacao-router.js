@@ -18,7 +18,7 @@ router.route('/:id/denuncia')
 router.route('/:id/deleta')
     .get((...args) => controller.deleta(...args));
 
-router.route('/:id/comentario')
+router.route('/:id/comentario/:iduser')
     .post((...args) => controller.comenta(...args));
 
 module.exports = router;
